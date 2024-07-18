@@ -9,19 +9,6 @@ import org.openqa.selenium.WebElement;
 
 public class LoginPage extends BaseLibrary {
 
-    @Step("Popup kapatma varsa tıklanır")
-    public LoginPage closePopup() throws InterruptedException {
-        sleep(5000);
-        try {
-            WebElement popupElement = driver.findElement(By.xpath("//button[@class='ab-close-button']"));
-            if (popupElement.isDisplayed()) {
-                popupElement.click();
-            }
-        } catch (NoSuchElementException e) {
-        }
-        return this;
-    }
-
     @Step("Giriş sayfasına gidilir")
     public LoginPage goToPage() {
         driver.findElement(By.xpath("(//div[@class='header__user-menu-desktop__popover-link'])[2]")).click();

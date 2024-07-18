@@ -2,6 +2,7 @@ import Base.BaseTest;
 import Pages.AccountPage;
 import Pages.HomePage;
 import Pages.LoginPage;
+import Pages.SearchPage;
 import org.testng.annotations.Test;
 
 public class UserTests extends BaseTest {
@@ -9,6 +10,7 @@ public class UserTests extends BaseTest {
     HomePage homePage = new HomePage();
     LoginPage loginPage = new LoginPage();
     AccountPage accountPage = new AccountPage();
+    SearchPage searchPage = new SearchPage();
 
     @Test(description = "Anasayfa yükleniyor mu?")
     public void loadHome() {
@@ -21,9 +23,9 @@ public class UserTests extends BaseTest {
     public void login() throws InterruptedException {
         homePage
                 .goToHome()
-                .clickOneTrustBtn();
+                .clickOneTrustBtn()
+                .closePopup();
         loginPage
-                .closePopup()
                 .goToPage()
                 .clickCloudflare()
                 .fillEmail()
@@ -31,6 +33,18 @@ public class UserTests extends BaseTest {
                 .clickLogin();
         accountPage
                 .seeMyAccount();
+    }
+
+    @Test(description = "Ürün arama çalışıyor mu?")
+    public void searchProduct() throws InterruptedException {
+        homePage
+                .goToHome()
+                .clickOneTrustBtn()
+                .closePopup()
+                .writeSearchTerm()
+                .clickSearchBtn();
+        searchPage
+                .checkSearchTerm();
     }
 
 }
