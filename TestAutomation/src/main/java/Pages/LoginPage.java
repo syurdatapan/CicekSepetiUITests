@@ -18,7 +18,6 @@ public class LoginPage extends BaseLibrary {
                 popupElement.click();
             }
         } catch (NoSuchElementException e) {
-
         }
         return this;
     }
@@ -29,17 +28,15 @@ public class LoginPage extends BaseLibrary {
         return this;
     }
 
-    @Step("Cludflare tıklanır")
+    @Step("Cludflare varsa tıklanır")
     public LoginPage clickCloudflare() throws InterruptedException {
         try {
-            // Daha uzun bir süre bekle
-            sleep(60000); // 60 saniye bekle
+            sleep(60000);
             WebElement cfElement = driver.findElement(By.cssSelector(".cb-lb input"));
             if (cfElement.isDisplayed()) {
                 cfElement.click();
             }
         } catch (NoSuchElementException e) {
-            // Eleman bulunamadı, hiçbir şey yapmadan devam et
         }
         return this;
     }
